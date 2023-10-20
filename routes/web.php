@@ -32,9 +32,9 @@ Route::middleware('auth', 'can:viewAdminPanel')->group(function () {
 
 
 Route::resource('/services', \App\Http\Controllers\ServiceController::class);
-Route::get('/long',[\App\Http\Controllers\HairController::class, 'index'])->name('long.index');
-Route::get('/medium',[\App\Http\Controllers\NailController::class, 'index'])->name('medium.index');
-Route::get('/short',[\App\Http\Controllers\SkinController::class, 'index'])->name('short.index');
+Route::get('/long',[\App\Http\Controllers\LongController::class, 'index'])->name('long.index');
+Route::get('/medium',[\App\Http\Controllers\MediumController::class, 'index'])->name('medium.index');
+Route::get('/short',[\App\Http\Controllers\ShortController::class, 'index'])->name('short.index');
 Route::resource('/admin',AdminController::class);
 
 require __DIR__.'/auth.php';
