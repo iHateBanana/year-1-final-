@@ -9,7 +9,10 @@ export default {
         './resources/views/**/*.blade.php',
     ],
 
-    theme: {
+    theme: { 
+        colors: {
+            'brown': '#C67B45',
+          },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
