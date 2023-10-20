@@ -22,10 +22,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'can:viewAdminPanel')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
 });
+
+
+Route::resource('/services', \App\Http\Controllers\ServiceController::class);
+Route::get('/long',[\App\Http\Controllers\HairController::class, 'index'])->name('long.index');
+Route::get('/medium',[\App\Http\Controllers\NailController::class, 'index'])->name('medium.index');
+Route::get('/short',[\App\Http\Controllers\SkinController::class, 'index'])->name('short.index');
+Route::resource('/admin',AdminController::class);
 
 require __DIR__.'/auth.php';
